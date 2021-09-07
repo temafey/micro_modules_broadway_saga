@@ -72,10 +72,11 @@ class StaticallyConfiguredSagaMetadataTest extends TestCase
 
     /**
      * @test
-     * @expectedException RuntimeException
+     *
      */
     public function it_throws_an_exception_if_there_is_no_criteria_for_a_given_event(): void
     {
+        $this->expectException(RuntimeException::class);
         $event = new StaticallyConfiguredSagaMetadataTestSagaTestEvent2();
         $domainMessage = $this->createDomainMessage($event);
 

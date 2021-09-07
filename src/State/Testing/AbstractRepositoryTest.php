@@ -114,11 +114,11 @@ abstract class AbstractRepositoryTest extends TestCase
 
     /**
      * @test
-     * @expectedException RepositoryException
-     * @expectedExceptionMessage Multiple saga state instances found.
      */
     public function it_throws_an_exception_if_multiple_matching_elements_are_found(): void
     {
+        $this->expectExceptionMessage("Multiple saga state instances found.");
+        $this->expectException(RepositoryException::class);
         $s1 = new State(1, 'sagaId');
         $s1->set('appId', 42);
         $this->repository->save($s1);
